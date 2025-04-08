@@ -112,21 +112,21 @@ public class FacturaPDF {
         		{null, null, null, null},
         		{null, null, null, null},
         		{null, null, null, null},
+        		{null, "", null, null},
         		{null, null, null, null},
-        		{null, null, null, null},
-        		{null, null, null, null},
+        		{null, "", null, null},
         		{null, null, null, null},
         	},
         	new String[] {
         		"Cantidad", "Descripci\u00F3n", "Precio Unitario", "Precio Total"
         	}
         ));
-        table.getColumnModel().getColumn(0).setPreferredWidth(80);
-        table.getColumnModel().getColumn(1).setPreferredWidth(400);
-        table.getColumnModel().getColumn(2).setPreferredWidth(100);
-        table.getColumnModel().getColumn(3).setPreferredWidth(100);
+        table.getColumnModel().getColumn(0).setPreferredWidth(52);
+        table.getColumnModel().getColumn(1).setPreferredWidth(281);
+        table.getColumnModel().getColumn(2).setPreferredWidth(119);
+        table.getColumnModel().getColumn(3).setPreferredWidth(78);
         table.setFont(new Font("Arial", Font.PLAIN, 12));
-        table.setBounds(20, 200, 661, 350);
+        table.setBounds(30, 195, 568, 350);
         frame.getContentPane().add(table);
         
         // Listener para cálculo automático
@@ -215,7 +215,7 @@ public class FacturaPDF {
                     yPosition -= 30;
                     
                     // Información de la factura
-                    contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 12);
+                    contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 10);
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                     String fecha = sdf.format(((Date) fechaSpinner.getValue()));
                     
@@ -231,7 +231,7 @@ public class FacturaPDF {
                     yPosition -= 50;
                     
                     // Dibujar tabla con bordes
-                    float[] columnWidths = {80, 350, 100, 100};
+                    float[] columnWidths = {80, 200, 100, 100}; // Ajusta los anchos según sea necesario
                     float tableHeight = 20 * (table.getRowCount() + 1);
                     
                     // Dibujar bordes de la tabla
@@ -278,7 +278,7 @@ public class FacturaPDF {
                     }
                     
                     // Datos de la tabla
-                    contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 12);
+                    contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 10);
                     DefaultTableModel model = (DefaultTableModel) table.getModel();
                     nextY -= 20;
                     
@@ -317,7 +317,7 @@ public class FacturaPDF {
                     // Total
                     contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 12);
                     contentStream.beginText();
-                    contentStream.newLineAtOffset(margin + tableWidth - 150, nextY - 30);
+                    contentStream.newLineAtOffset(margin + tableWidth - 100, nextY - 20); // Ajusta la posición del total
                     contentStream.showText("TOTAL: " + totalField.getText());
                     contentStream.endText();
                 }
