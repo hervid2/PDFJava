@@ -121,10 +121,9 @@ public class FacturaPDF {
         		"Cantidad", "Descripci\u00F3n", "Precio Unitario", "Precio Total"
         	}
         ));
-        table.getColumnModel().getColumn(0).setPreferredWidth(52);
-        table.getColumnModel().getColumn(1).setPreferredWidth(281);
-        table.getColumnModel().getColumn(2).setPreferredWidth(119);
-        table.getColumnModel().getColumn(3).setPreferredWidth(78);
+        table.getColumnModel().getColumn(1).setPreferredWidth(273);
+        table.getColumnModel().getColumn(2).setPreferredWidth(106);
+        table.getColumnModel().getColumn(3).setPreferredWidth(90);
         table.setFont(new Font("Arial", Font.PLAIN, 12));
         table.setBounds(30, 195, 568, 350);
         frame.getContentPane().add(table);
@@ -202,7 +201,7 @@ public class FacturaPDF {
                 
                 try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
                     // Configuración inicial
-                    float margin = 50;
+                    float margin = 40;
                     float yPosition = page.getMediaBox().getHeight() - margin;
                     float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
                     
@@ -231,7 +230,7 @@ public class FacturaPDF {
                     yPosition -= 50;
                     
                     // Dibujar tabla con bordes
-                    float[] columnWidths = {80, 200, 100, 100}; // Ajusta los anchos según sea necesario
+                    float[] columnWidths = {80, 200, 70, 80}; // Ajusta los anchos según sea necesario
                     float tableHeight = 20 * (table.getRowCount() + 1);
                     
                     // Dibujar bordes de la tabla
@@ -317,7 +316,7 @@ public class FacturaPDF {
                     // Total
                     contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 12);
                     contentStream.beginText();
-                    contentStream.newLineAtOffset(margin + tableWidth - 100, nextY - 20); // Ajusta la posición del total
+                    contentStream.newLineAtOffset(margin + tableWidth - 100, nextY - 180); // Ajusta la posición del total
                     contentStream.showText("TOTAL: " + totalField.getText());
                     contentStream.endText();
                 }
