@@ -221,7 +221,7 @@ public class AseguradoraAnimal {
         
         JButton btnNewButton = new JButton("Generar contrato");
         btnNewButton.setFont(new Font("Verdana", Font.BOLD, 14));
-        btnNewButton.setBounds(312, 551, 165, 33);
+        btnNewButton.setBounds(295, 551, 196, 33);
         
         // Agregar ActionListener al botón
         btnNewButton.addActionListener(new ActionListener() {
@@ -297,7 +297,7 @@ public class AseguradoraAnimal {
             PDImageXObject logo = PDImageXObject.createFromFile("src/img/gato.png", document);
             
             // Agregar el logo en la esquina superior derecha
-            contentStream.drawImage(logo, 400, 700, 100, 100);
+            contentStream.drawImage(logo, 500, 700, 75, 75);
             
             // Configurar fuentes
             contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 18);
@@ -352,9 +352,9 @@ public class AseguradoraAnimal {
             contentStream.beginText();
             contentStream.newLineAtOffset(60, 530);
             contentStream.showText("Nombre: " + textField_5.getText());
-            contentStream.newLineAtOffset(200, 0);
+            contentStream.newLineAtOffset(250, 0);
             contentStream.showText("Identificación: " + textField_6.getText());
-            contentStream.newLineAtOffset(-200, -20);
+            contentStream.newLineAtOffset(-250, -20);
             contentStream.showText("Teléfono: " + textField_7.getText());
             contentStream.endText();
             
@@ -397,7 +397,7 @@ public class AseguradoraAnimal {
             // Firma
             contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 12);
             contentStream.beginText();
-            contentStream.newLineAtOffset(350, 80);
+            contentStream.newLineAtOffset(300, 60);
             contentStream.showText("Firma del propietario: ___________________");
             contentStream.endText();
             
